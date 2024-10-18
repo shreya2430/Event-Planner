@@ -88,3 +88,33 @@ function addEvent() {
     events.push(newEvent);
     displayEvents(events); // Refresh the event list
 }
+
+//add checkboxes to mark events as upcoming or completed:
+function displayEvents(events) {
+    const eventsList = document.getElementById('events-list');
+    eventsList.innerHTML = '';
+    events.forEach(event => {
+        let truncatedDesc = event.description.split(' ').slice(0, 10).join(' ') + '...';
+        const eventItem = `
+      <div class="event ${event.completed ? 'completed' : event.upcoming ? 'upcoming' : ''}" id="event-${event.id}">
+        <h3>${event.name}</h3>
+        <p>${truncatedDesc}</p>
+        <label><input type="checkbox" ${event.upcoming ? 'checked' : ''} onclick="toggleUpcoming(${event.id})"> Upcoming</label>
+        <label><input type="checkbox" ${event.completed ? 'checked' : ''} onclick="toggleCompleted(${event.id})"> Completed</label>
+        <button onclick="expandEvent(${event.id})">View Details</button>
+      </div>`;
+        eventsList.innerHTML += eventItem;
+    });
+}
+
+function toggleUpcoming(id) {
+    const event = events.find(e => e.id === id);
+    event.upcoming = !event.upcoming;
+    displayEvents(events);
+}
+
+function toggleCompleted(id) {
+    const event = events.find(e => e.id === id);
+    event.completed = !event.completed;
+    displayEvents(events);
+}
