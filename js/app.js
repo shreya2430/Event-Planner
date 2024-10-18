@@ -59,3 +59,32 @@ function editEvent(id) {
     </div>`;
     document.getElementById(`event-${id}`).innerHTML = editForm;
 }
+//Add functionality to create new events by clicking the “Create Event” button:
+document.getElementById('create-event').addEventListener('click', function () {
+    const newEventForm = `
+    <div class="new-event-form">
+      <input type="text" id="new-name" placeholder="Event Name">
+      <input type="date" id="new-date">
+      <input type="text" id="new-location" placeholder="Location">
+      <textarea id="new-description" placeholder="Description"></textarea>
+      <button onclick="addEvent()">Add Event</button>
+    </div>`;
+    document.getElementById('events-list').innerHTML += newEventForm;
+});
+
+function addEvent() {
+    const name = document.getElementById('new-name').value;
+    const date = document.getElementById('new-date').value;
+    const location = document.getElementById('new-location').value;
+    const description = document.getElementById('new-description').value;
+    const newEvent = {
+        id: Date.now(),
+        name,
+        date,
+        location,
+        description,
+        createdAt: new Date().toISOString()
+    };
+    events.push(newEvent);
+    displayEvents(events); // Refresh the event list
+}
