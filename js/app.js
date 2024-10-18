@@ -61,7 +61,7 @@ function editEvent(id) {
 
     if (eventElement && event) {
         const editForm = `
-        <div class="edit-form" onclick="event.stopPropagation();">
+        <div class="form" onclick="event.stopPropagation();">
           <input type="text" id="edit-name-${id}" value="${event.name}">
           <input type="date" id="edit-date-${id}" value="${event.date}">
           <input type="text" id="edit-location-${id}" value="${event.location}">
@@ -71,7 +71,7 @@ function editEvent(id) {
         eventElement.innerHTML = editForm;
     }
 }
-
+//save event after editing
 function saveEvent(id) {
     const event = events.find(e => e.id === id);
     event.name = document.getElementById(`edit-name-${id}`).value;
@@ -86,7 +86,7 @@ function saveEvent(id) {
 //Add functionality to create new events by clicking the “Create Event” button:
 document.getElementById('create-event').addEventListener('click', function () {
     const newEventForm = `
-    <div class="new-event-form">
+    <div class="form">
       <input type="text" id="new-name" placeholder="Event Name">
       <input type="date" id="new-date">
       <input type="text" id="new-location" placeholder="Location">
@@ -95,7 +95,7 @@ document.getElementById('create-event').addEventListener('click', function () {
     </div>`;
     document.getElementById('events-list').innerHTML += newEventForm;
 });
-
+//add event
 function addEvent() {
     const name = document.getElementById('new-name').value;
     const date = document.getElementById('new-date').value;
@@ -131,12 +131,11 @@ function displayEvents(events) {
         eventsList.innerHTML += eventItem;
     });
 }
-
+//toggle upcoming and completed events
 function toggleUpcoming(id) {
     const event = events.find(e => e.id === id);
     event.upcoming = true;
     event.completed = false;
-    // event.upcoming = !event.upcoming;
     displayEvents(events);
 }
 
