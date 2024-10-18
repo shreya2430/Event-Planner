@@ -30,3 +30,18 @@ function displayEvents(events) {
         eventsList.innerHTML += eventItem;
     });
 }
+
+// This function expands the event details when the user clicks the View Details button.
+function expandEvent(id) {
+    const event = events.find(e => e.id === id);
+    const fullDetails = `
+    <div class="event-details">
+      <h3>${event.name}</h3>
+      <p>${event.description}</p>
+      <p>Date: ${event.date}</p>
+      <p>Location: ${event.location}</p>
+      <p>Created On: ${event.createdAt}</p>
+      <button onclick="editEvent(${event.id})">Edit Event</button>
+    </div>`;
+    document.getElementById(`event-${id}`).innerHTML = fullDetails;
+}
