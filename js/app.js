@@ -2,7 +2,7 @@
 // parses the data into a usable format(JavaScript objects), 
 // and calls the displayEvents function to show the events on the webpage.
 
-let events = []; 
+let events = [];
 window.onload = function () {
     const request = new XMLHttpRequest();
     request.open('GET', 'data/events.json', true);
@@ -46,7 +46,7 @@ function expandEvent(id) {
           <p>Date: ${event.date}</p>
           <p>Location: ${event.location}</p>
           <p>Created On: ${event.createdAt}</p>
-          <button onclick="editEvent(${event.id}); event.stopPropagation();">Edit Event</button>
+          <button class="btn" onclick="editEvent(${event.id}); event.stopPropagation();">Edit Event</button>
         </div>`;
         eventElement.innerHTML = fullDetails;
     } else {
@@ -66,7 +66,7 @@ function editEvent(id) {
           <input type="date" id="edit-date-${id}" value="${event.date}">
           <input type="text" id="edit-location-${id}" value="${event.location}">
           <textarea id="edit-description-${id}">${event.description}</textarea>
-          <button onclick="saveEvent(${event.id}); event.stopPropagation();">Save</button>
+          <button class="btn" onclick="saveEvent(${event.id}); event.stopPropagation();">Save</button>
         </div>`;
         eventElement.innerHTML = editForm;
     }
@@ -91,7 +91,7 @@ document.getElementById('create-event').addEventListener('click', function () {
       <input type="date" id="new-date">
       <input type="text" id="new-location" placeholder="Location">
       <textarea id="new-description" placeholder="Description"></textarea>
-      <button onclick="addEvent()">Add Event</button>
+      <button class="btn" onclick="addEvent()">Add Event</button>
     </div>`;
     document.getElementById('events-list').innerHTML += newEventForm;
 });
@@ -126,7 +126,7 @@ function displayEvents(events) {
         <p>${truncatedDesc}</p>
         <label><input type="checkbox" ${event.upcoming ? 'checked' : ''} onclick="toggleUpcoming(${event.id}); event.stopPropagation();"> Upcoming</label>
         <label><input type="checkbox" ${event.completed ? 'checked' : ''} onclick="toggleCompleted(${event.id}); event.stopPropagation();"> Completed</label>
-         <button onclick="editEvent(${event.id}); event.stopPropagation();">Edit Event</button>
+         <button class="btn" onclick="editEvent(${event.id}); event.stopPropagation();">Edit Event</button>
       </div>`;
         eventsList.innerHTML += eventItem;
     });
@@ -135,7 +135,7 @@ function displayEvents(events) {
 function toggleUpcoming(id) {
     const event = events.find(e => e.id === id);
     event.upcoming = true;
-    event.completed = false; 
+    event.completed = false;
     // event.upcoming = !event.upcoming;
     displayEvents(events);
 }

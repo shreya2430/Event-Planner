@@ -1,0 +1,23 @@
+/* Common Button Styles */
+button {
+    padding: 5px 10px;
+    border-radius: 2px;
+    border: none;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 250;
+    margin: 5px 0;
+    margin-left: 10px;
+}
+
+/* Save Button Specific Styles */
+.btn{
+    background-color: #f68b27;
+    color: white;
+    transition: background-color 0.3s ease;
+}
+
+.btn:hover {
+    background-color: rgb(251, 114, 1);
+    /* Darker green on hover */
+}
