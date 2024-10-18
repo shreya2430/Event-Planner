@@ -1,0 +1,22 @@
+[
+    {
+        "id": 1,
+        "name": "Event 1 - Web Design and User Experience",
+        "date": "2024-10-17",
+        "description": "This is the description for Event 1. It is a web design assignment about HTML SCSS and JAVASCRIPT.",
+        "location": "Boston, MA",
+        "createdAt": "2024-10-17T10:30:00Z",
+        "upcoming": true,
+        "completed": false
+    },
+    {
+        "id": 2,
+        "name": "Event 2 - Object Oriented Design",
+        "date": "2024-10-18",
+        "description": "This is the description for Event 2. lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+        "location": "Boston, MA",
+        "createdAt": "2024-10-18T10:30:00Z",
+        "upcoming": true,
+        "completed": false
+    }
+]
