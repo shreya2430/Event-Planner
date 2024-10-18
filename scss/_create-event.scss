@@ -1,0 +1,13 @@
+.create-event {
+    margin-bottom: 25px;
+    margin-left: 45%;
+    padding: 20px;
+    font-size: medium;
+    font-weight: bold;
+    cursor: pointer;
+    background-color: #84c9e9c2;
+
+    &:hover {
+        background-color: #42abdcc2;
+    }
+}

@@ -1,0 +1,15 @@
+//add styling to each event
+.event {
+    @include add-color-and-border();
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+// checkbox styling
+.completed {
+    @include add-color-and-border(lightgreen);
+}
+
+.upcoming {
+    @include add-color-and-border(lightyellow);
+}

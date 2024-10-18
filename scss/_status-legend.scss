@@ -1,0 +1,26 @@
+/* Styles for the status legend */
+.status-legend {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+    gap: 6px;
+    font-size: large;
+    font-weight: 150px;
+}
+
+//style legend box
+.legend-box {
+    display: inline-block;
+    width: 15px;
+    height: 15px;
+    margin-right: 5px;
+    border-radius: 3px;
+}
+
+.upcoming-box {
+    @include add-color-and-border(lightyellow);
+}
+
+.completed-box {
+    @include add-color-and-border(lightgreen);
+}

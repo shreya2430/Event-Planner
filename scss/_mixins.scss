@@ -1,0 +1,4 @@
+@mixin add-color-and-border($color:null){
+    background-color: $color;
+    border: 1px solid #ddd;
+}
