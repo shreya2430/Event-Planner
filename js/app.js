@@ -45,3 +45,17 @@ function expandEvent(id) {
     </div>`;
     document.getElementById(`event-${id}`).innerHTML = fullDetails;
 }
+
+// This function allows the user to edit an event directly in expandible view.
+function editEvent(id) {
+    const event = events.find(e => e.id === id);
+    const editForm = `
+    <div class="edit-form">
+      <input type="text" id="edit-name" value="${event.name}">
+      <input type="date" id="edit-date" value="${event.date}">
+      <input type="text" id="edit-location" value="${event.location}">
+      <textarea id="edit-description">${event.description}</textarea>
+      <button onclick="saveEvent(${event.id})">Save</button>
+    </div>`;
+    document.getElementById(`event-${id}`).innerHTML = editForm;
+}
