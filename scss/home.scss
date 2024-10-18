@@ -1,0 +1,34 @@
+.event {
+    border: 1px solid #ddd;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+.heading{
+    text-align: center;
+    font-size: 30px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    background-color: rgba(123, 61, 190, 0.249);
+}
+.create-event{ 
+    margin-bottom: 25px;
+    margin-left: 45%;
+    padding: 20px;
+    font-size: medium;
+    font-weight: bold;
+    cursor: pointer;
+    background-color: #84c9e9c2;
+
+    &:hover{
+        background-color: #42abdcc2;
+    }
+}
+
+.completed {
+    background-color: lightgreen;
+}
+
+.upcoming {
+    background-color: lightyellow;
+}
