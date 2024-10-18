@@ -16,7 +16,7 @@
         "description": "This is the description for Event 2. lorem ipsum dolor sit amet, consectetur adipiscing elit.",
         "location": "Boston, MA",
         "createdAt": "2024-10-18T10:30:00Z",
-        "upcoming": true,
-        "completed": false
+        "upcoming": false,
+        "completed": true
     }
 ]
