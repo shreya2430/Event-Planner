@@ -88,6 +88,13 @@ function saveEvent(id) {
 
 //Add functionality to create new events by clicking the “Create Event” button:
 document.getElementById('create-event').addEventListener('click', function () {
+    const createButton = document.getElementById('create-event');
+    if (document.querySelector('newEventForm')) {
+        alert('Please finish creating the event before creating a new one');
+        return;
+    }
+   createButton.disabled = true;
+    
     const newEventForm = `
     <div class="form">
       <input type="text" id="new-name" placeholder="Event Name" required>
@@ -105,7 +112,7 @@ function addEvent() {
     const location = document.getElementById('new-location').value;
     const description = document.getElementById('new-description').value;
     if (name === '' || date === '' || location === '') {
-        alert('Please fill in name, date and location fields');
+        alert('Please fill in name, date and location fields to create an event');
         return;
     }
     const newEvent = {
@@ -119,6 +126,7 @@ function addEvent() {
     newEvent.upcoming = true;
     events.push(newEvent);
     displayEvents(events); // Refresh the event list
+    document.getElementById('create-event').disabled = false; // Re-enable the "Create Event" button
 }
 
 //add checkboxes to mark events as upcoming or completed:
