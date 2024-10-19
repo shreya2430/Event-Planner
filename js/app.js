@@ -62,9 +62,9 @@ function editEvent(id) {
     if (eventElement && event) {
         const editForm = `
         <div class="form" onclick="event.stopPropagation();">
-          <input type="text" id="edit-name-${id}" value="${event.name}">
-          <input type="date" id="edit-date-${id}" value="${event.date}">
-          <input type="text" id="edit-location-${id}" value="${event.location}">
+          <input required type="text" id="edit-name-${id}" value="${event.name}" >
+          <input required type="date" id="edit-date-${id}" value="${event.date}">
+          <input required type="text" id="edit-location-${id}" value="${event.location}">
           <textarea id="edit-description-${id}">${event.description}</textarea>
           <button class="btn" onclick="saveEvent(${event.id}); event.stopPropagation();">Save</button>
         </div>`;
@@ -78,7 +78,10 @@ function saveEvent(id) {
     event.date = document.getElementById(`edit-date-${id}`).value;
     event.location = document.getElementById(`edit-location-${id}`).value;
     event.description = document.getElementById(`edit-description-${id}`).value;
-
+    if (event.name === '' || event.date === '' || event.location === '') {
+        alert('Please fill in name, date and location fields');
+        return;
+    }
     displayEvents(events); // Re-render the event list with updated data
 }
 
@@ -87,9 +90,9 @@ function saveEvent(id) {
 document.getElementById('create-event').addEventListener('click', function () {
     const newEventForm = `
     <div class="form">
-      <input type="text" id="new-name" placeholder="Event Name">
-      <input type="date" id="new-date">
-      <input type="text" id="new-location" placeholder="Location">
+      <input type="text" id="new-name" placeholder="Event Name" required>
+      <input type="date" id="new-date" required>
+      <input type="text" id="new-location" placeholder="Location" required>
       <textarea id="new-description" placeholder="Description"></textarea>
       <button class="btn" onclick="addEvent()">Add Event</button>
     </div>`;
@@ -101,6 +104,10 @@ function addEvent() {
     const date = document.getElementById('new-date').value;
     const location = document.getElementById('new-location').value;
     const description = document.getElementById('new-description').value;
+    if (name === '' || date === '' || location === '') {
+        alert('Please fill in name, date and location fields');
+        return;
+    }
     const newEvent = {
         id: Date.now(),
         name,
@@ -109,6 +116,7 @@ function addEvent() {
         description,
         createdAt: new Date().toISOString()
     };
+    newEvent.upcoming = true;
     events.push(newEvent);
     displayEvents(events); // Refresh the event list
 }
