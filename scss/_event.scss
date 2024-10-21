@@ -1,16 +1,32 @@
-//add styling to each event
-.event {
-    @include add-color-and-border();
-    padding: 10px;
-    margin-bottom: 10px;
-    cursor: pointer;
-}
 
-// checkbox styling
-.completed {
-    @include add-color-and-border(lightgreen);
-}
+.event-list {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 10px;
 
-.upcoming {
-    @include add-color-and-border(lightyellow);
+    // add styling to each event
+    & > .event {
+        border: 0.5px solid #000000;
+        padding: 10px;
+        margin-bottom: 10px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+
+    // checkbox styling
+    & > .completed {
+        background-color: rgb(144, 238, 144);
+
+        &:hover {
+            background-color: rgb(110, 245, 110);
+        }
+    }
+
+    & > .upcoming {
+        background-color: rgb(255, 255, 224);
+
+        &:hover {
+            background-color: rgb(255, 255, 159);
+        }
+    }
 }
