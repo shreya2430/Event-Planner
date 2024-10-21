@@ -27,7 +27,7 @@ function displayEvents(events) {
       <div class="event" id="event-${event.id}">
         <h3>${event.name}</h3>
         <p>${truncatedDesc}</p>
-        <button onclick="expandEvent(${event.id})">View Details</button>
+        <button onclick="toggleEvent(${event.id});"></button>
       </div>`;
         eventsList.innerHTML += eventItem;
     });
@@ -51,6 +51,45 @@ function expandEvent(id) {
         eventElement.innerHTML = fullDetails;
     } else {
         console.error('Event element or event data not found');
+    }
+}
+
+function toggleEvent(id) {
+    const event = events.find(e => e.id === id);
+    const eventElement = document.getElementById(`event-${id}`);
+
+    if (!event || !eventElement) {
+        console.error('Event element or event data not found');
+        return;
+    }
+
+    // Check if the event is expanded or not
+    if (eventElement.classList.contains('expanded')) {
+        // Shrink the event details back to the truncated version
+        let truncatedDesc = event.description.split(' ').slice(0, 10).join(' ') + '...';
+        const eventItem = `
+        <div class="event" id="event-${event.id}">
+            <h3>${event.name}</h3>
+            <p>${truncatedDesc}</p>
+        <label><input type="checkbox" ${event.upcoming ? 'checked' : ''} onclick="toggleUpcoming(${event.id}); event.stopPropagation();"> Upcoming</label>
+        <label><input type="checkbox" ${event.completed ? 'checked' : ''} onclick="toggleCompleted(${event.id}); event.stopPropagation();"> Completed</label>
+         <button class="btn" onclick="editEvent(${event.id}); event.stopPropagation();">Edit Event</button>
+        </div>`;
+        eventElement.innerHTML = eventItem;
+        eventElement.classList.remove('expanded'); // Remove expanded class
+    } else {
+        // Expand the event details
+        const fullDetails = `
+        <div class="event-details">
+          <h3>${event.name}</h3>
+          <p>${event.description}</p>
+          <p>Date: ${event.date}</p>
+          <p>Location: ${event.location}</p>
+          <p>Created On: ${event.createdAt}</p>
+          <button class="btn" onclick="editEvent(${event.id}); event.stopPropagation();">Edit Event</button>
+        </div>`;
+        eventElement.innerHTML = fullDetails;
+        eventElement.classList.add('expanded'); // Add expanded class
     }
 }
 
@@ -137,7 +176,7 @@ function displayEvents(events) {
         let truncatedDesc = event.description.split(' ').slice(0, 10).join(' ') + '...';
         const eventItem = `
       <div class="event ${event.completed ? 'completed' : event.upcoming ? 'upcoming' : ''}" 
-           id="event-${event.id}" onclick="expandEvent(${event.id})"> 
+           id="event-${event.id}" onclick="toggleEvent(${event.id});"> 
         <h3>${event.name}</h3>
         <p>${truncatedDesc}</p>
         <label><input type="checkbox" ${event.upcoming ? 'checked' : ''} onclick="toggleUpcoming(${event.id}); event.stopPropagation();"> Upcoming</label>
