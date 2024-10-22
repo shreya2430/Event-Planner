@@ -1,0 +1,43 @@
+// Modal Wrapper
+.modal {
+    display: none; // Hidden by default
+    position: fixed;
+    z-index: 1; // Sit on top of other elements
+    left: 0;
+    top: 0;
+    width: 100%; // Full width
+    height: 100%; // Full height
+    background-color: rgba(0, 0, 0, 0.5); // Background overlay with opacity
+    overflow: auto; // Enable scrolling if needed
+
+    // Modal Content
+    .modal-content {
+        background-color: #fefefe;
+        margin: 15% auto; // Centered on the screen
+        padding: 20px;
+        border: 1px solid #888;
+        width: 40%; // Adjust modal width as needed
+        box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3);
+        border-radius: 8px; // Rounded corners
+
+        // Media query for smaller screens
+        @media screen and (max-width: 600px) {
+            width: 80%; // Full width for small devices
+        }
+    }
+
+    // Close Button
+    .close {
+        color: #aaa;
+        float: right;
+        font-size: 28px;
+        font-weight: bold;
+        cursor: pointer;
+
+        &:hover,
+        &:focus {
+            color: black;
+            text-decoration: none;
+        }
+    }
+}

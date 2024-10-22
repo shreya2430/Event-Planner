@@ -58,18 +58,26 @@ function toggleEvent(id) {
 // This function allows the user to edit an event directly in expandible view.
 function editEvent(id) {
     const event = events.find(e => e.id === id);
-    const eventElement = document.getElementById(`event-${id}`);
 
-    if (eventElement && event) {
+    if (event) {
         const editForm = `
-        <div class="form" onclick="event.stopPropagation();">
-          <input required type="text" id="edit-name-${id}" value="${event.name}" >
+        <div class="form">
+          <label>Event Name</label>
+          <input required type="text" id="edit-name-${id}" value="${event.name}">
+          
+          <label>Date</label>
           <input required type="date" id="edit-date-${id}" value="${event.date}">
+          
+          <label>Location</label>
           <input required type="text" id="edit-location-${id}" value="${event.location}">
+          
+          <label>Description</label>
           <textarea id="edit-description-${id}">${event.description}</textarea>
-          <button class="btn" onclick="saveEvent(${event.id}); event.stopPropagation();">Save</button>
+          
+          <button class="btn" onclick="saveEvent(${event.id}); closeModal();">Save</button>
         </div>`;
-        eventElement.innerHTML = editForm;
+
+        openModal(editForm);
     }
 }
 //save event after editing
@@ -89,22 +97,24 @@ function saveEvent(id) {
 
 //Add functionality to create new events by clicking the “Create Event” button:
 document.getElementById('create-event').addEventListener('click', function () {
-    const createButton = document.getElementById('create-event');
-    if (document.querySelector('newEventForm')) {
-        alert('Please finish creating the event before creating a new one');
-        return;
-    }
-   createButton.disabled = true;
-    
-    const newEventForm = `
+    const createForm = `
     <div class="form">
-      <input type="text" id="new-name" placeholder="Event Name" required>
-      <input type="date" id="new-date" required>
-      <input type="text" id="new-location" placeholder="Location" required>
+      <label>Event Name</label>
+      <input required type="text" id="new-name" placeholder="Event Name">
+      
+      <label>Date</label>
+      <input required type="date" id="new-date">
+      
+      <label>Location</label>
+      <input required type="text" id="new-location" placeholder="Location">
+      
+      <label>Description</label>
       <textarea id="new-description" placeholder="Description"></textarea>
-      <button class="btn" onclick="addEvent()">Add Event</button>
+      
+      <button class="btn" onclick="addEvent(); closeModal();">Add Event</button>
     </div>`;
-    document.getElementById('events-list').innerHTML += newEventForm;
+
+    openModal(createForm);
 });
 //add event
 function addEvent() {
@@ -162,3 +172,30 @@ function toggleCompleted(id) {
     event.upcoming = false;
     displayEvents(events);
 }
+
+// Get the modal and close button
+const modal = document.getElementById("eventModal");
+const closeModalButton = document.getElementById("closeModal");
+
+// Function to open the modal with the provided form content
+function openModal(content) {
+    document.getElementById('modal-form-content').innerHTML = content;
+    modal.style.display = "block";
+}
+
+// Function to close the modal
+function closeModal() {
+    modal.style.display = "none";
+}
+
+// Close the modal when the user clicks the close button
+closeModalButton.onclick = function () {
+    closeModal();
+};
+
+// Close the modal when the user clicks anywhere outside of the modal content
+window.onclick = function (event) {
+    if (event.target == modal) {
+        closeModal();
+    }
+};
