@@ -1,0 +1,162 @@
+.heading {
+  text-align: center;
+  font-size: 30px;
+  font-weight: bold;
+  margin-bottom: 20px;
+  background-color: rgba(123, 61, 190, 0.249);
+}
+
+.create-event {
+  margin-bottom: 25px;
+  margin-left: 45%;
+  padding: 20px;
+  font-size: medium;
+  font-weight: bold;
+  cursor: pointer;
+  background-color: rgba(132, 201, 233, 0.7607843137);
+}
+.create-event:hover {
+  background-color: rgba(66, 171, 220, 0.7607843137);
+}
+
+/* Styles for the status legend */
+.status-legend {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+  gap: 6px;
+  font-size: large;
+  font-weight: 150px;
+}
+
+.legend-box {
+  display: inline-block;
+  width: 15px;
+  height: 15px;
+  margin-right: 5px;
+  border-radius: 3px;
+}
+
+.upcoming-box {
+  background-color: lightyellow;
+  border: 1px solid #ddd;
+}
+
+.completed-box {
+  background-color: lightgreen;
+  border: 1px solid #ddd;
+}
+
+/* Common Button Styles */
+button {
+  padding: 5px 10px;
+  border-radius: 2px;
+  border: none;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 250;
+  margin: 5px 0;
+}
+
+/* Save Button Specific Styles */
+.btn {
+  background-color: #f68b27;
+  color: white;
+  transition: background-color 0.3s ease;
+}
+
+.btn:hover {
+  background-color: rgb(251, 114, 1);
+  /* Darker orange on hover */
+}
+
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  overflow: auto;
+}
+.modal .modal-content {
+  background-color: #fefefe;
+  margin: 15% auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 40%;
+  box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3);
+  border-radius: 8px;
+}
+@media screen and (max-width: 600px) {
+  .modal .modal-content {
+    width: 80%;
+  }
+}
+.modal .close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+  cursor: pointer;
+}
+.modal .close:hover, .modal .close:focus {
+  color: black;
+  text-decoration: none;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  width: 70%;
+  margin-left: auto;
+  margin-right: auto;
+  gap: 7px;
+}
+.form input {
+  margin-top: 1px;
+  height: 30px;
+}
+.form textarea {
+  height: 75px;
+}
+.form label {
+  color: rgb(0, 0, 0);
+  font-weight: 400;
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: rgb(172, 171, 171);
+  opacity: 1;
+}
+
+.event-list {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 10px;
+}
+.event-list > .event {
+  border: 0.5px solid #000000;
+  padding: 10px;
+  margin-bottom: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+.event-list > .completed {
+  background-color: rgb(144, 238, 144);
+}
+.event-list > .completed:hover {
+  background-color: rgb(110, 245, 110);
+}
+.event-list > .upcoming {
+  background-color: rgb(255, 255, 224);
+}
+.event-list > .upcoming:hover {
+  background-color: rgb(255, 255, 159);
+}
+
+/*# sourceMappingURL=main.css.map */
